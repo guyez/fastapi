@@ -1,5 +1,4 @@
 from enum import unique
-from tkinter import CASCADE
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import TIMESTAMP
@@ -18,7 +17,7 @@ class Post(Base):
     created_at = Column(
         TIMESTAMP(timezone=True), nullable=False, server_default=text("NOW()")
     )
-    owner_id = Column(Integer, ForeignKey("users.id", ondelete=CASCADE), nullable=False)
+    owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     owner = relationship("User")
 
 
